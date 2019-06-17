@@ -4,9 +4,14 @@ contract Claim{
     struct CourseApplication{
       uint caseId;
       string courseId;
-      /*string applicantName;
-      uint age;
-      uint courseFee;*/
+      string applicantName;
+      string applicantNRIC;
+      string applicantCitizenship;
+      string tpId;
+      string tpName;
+      string applicationDate;
+      uint applicantAge;
+      uint courseFee;
     }
 
     struct CourseUpdates{
@@ -21,10 +26,15 @@ contract Claim{
 
     event recordCourseApplicationEvent (
         uint caseId,
-        string courseId
-        /*,string applicantName,
-        uint age,
-        uint courseFee*/
+        string courseId,
+        string applicantName,
+        string applicantNRIC,
+        string applicantCitizenship,
+        string tpId,
+        string tpName,
+        string applicationDate,
+        uint applicantAge,
+        uint courseFee
     );
 
     event recordCourseUpdatesEvent (
@@ -35,19 +45,30 @@ contract Claim{
     );
 
     function recordCourseApplication
-        (uint _caseId, string memory _courseId
-        /*,string memory _applicantName, uint _age, uint _courseFee*/
+        (uint _caseId, string memory _courseId,
+        string memory _applicantName, 
+        string memory _applicantNRIC,
+        string memory _applicantCitizenship,
+        string memory _tpId,
+        string memory _tpName,
+        string memory _applicationDate,
+        uint _applicantAge, uint _courseFee
         )public{
          courseApplications[_caseId] = CourseApplication({
            courseId: _courseId,
-           caseId: _caseId
-           /*,applicantName: _applicantName,
-           age: _age,
-           courseFee: _courseFee*/
+           caseId: _caseId,
+           applicantName: _applicantName,
+           applicantNRIC: _applicantNRIC,
+           applicantCitizenship: _applicantCitizenship,
+           tpId: _tpId,
+           tpName: _tpName,
+           applicationDate: _applicationDate,
+           applicantAge: _applicantAge,
+           courseFee: _courseFee
          });
 
-         emit recordCourseApplicationEvent(_caseId, _courseId
-            /*,_applicantName, _age, _courseFee*/
+         emit recordCourseApplicationEvent(_caseId, _courseId,
+            _applicantName, applicantNRIC, _applicantCitizenship, _tpId, _tpName, _applicationDate, _applicantAge, _courseFee
          );
     }
 
